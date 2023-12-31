@@ -4,10 +4,29 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>The Browser Feature Checklist</title>
+		<link rel="stylesheet" href="./styles.css">
 	</head>
 	<body>
-		<h1>The Browser Feature Checklist</h1>
-		<p>Work in progress; open console</p>
+		<header>
+			<h1>The Browser Feature Checklist</h1>
+		</header>
+		<main>
+			<div id="calculated">
+				<p>What browsers you might be using:</p>
+				<p id="chrome"><b>Chrome</b>: <span id="chromeRange">loading...</span></p>
+				<p id="edge"><b>Edge</b>: <span id="edgeRange">loading...</span></p>
+				<p id="firefox"><b>Firefox</b>: <span id="firefoxRange">loading...</span></p>
+				<p id="safari"><b>Safari</b>: <span id="safariRange">loading...</span></p>
+				<p id="opera"><b>Opera</b>: <span id="operaRange">loading...</span></p>
+			</div>
+			<p>Supports detecting the following browsers:</p>
+			<p><b>Chrome</b>: 1 - 120</p>
+			<p><b>Edge</b>: 12 - 120</p>
+			<p><b>Firefox</b>: 1 - 121</p>
+			<p><b>Safari</b>: 3 - 17.2</p>
+			<p><b>Opera</b>: 10.1 - 104</p>
+			<p id="workinprogress">Work in progress; open console</p>
+		</main>
 		<script src="./main.js"></script>
 	</body>
 </html>
