@@ -13,8 +13,8 @@ var tests = {
 			return !!instance;
 		},
 		"Crypto": {
-			"randomUUID": function (){
-				return ("crypto" in window) && ("randomUUID" in crypto);
+			"randomUUID": function () {
+				return ("crypto" in window) && ("randomUUID" in window.crypto);
 			}
 		},
 		"Document": {
@@ -35,7 +35,7 @@ var tests = {
 		},
 		"Headers": {
 			"getSetCookie": function () {
-				return ("Headers" in window) && ("getSetCookie" in Headers.prototype);
+				return ("Headers" in window) && ("getSetCookie" in window.Headers.prototype);
 			},
 		},
 		"HTMLScriptElement": {
@@ -55,13 +55,13 @@ var tests = {
 		},
 		"WebGLRenderingContext": {
 			"drawingBufferColorSpace": function () {
-				return "drawingBufferColorSpace" in document.createElement("canvas").getContext("webgl2");
+				return "drawingBufferColorSpace" in window.document.createElement("canvas").getContext("webgl2");
 			},
 		},
 		"Window": {},
 		"URL": {
 			"canParse_static": function () {
-				return ("URL" in window) && ("canParse" in URL);
+				return ("URL" in window) && ("canParse" in window.URL);
 			}
 		},
 	},
@@ -122,15 +122,15 @@ var simpleApiTests = [
 	"Window.showModalDialog",
 	"Window.queryLocalFonts",
 ];
-simpleApiTests.forEach(function(simpleApiTest) {
+simpleApiTests.forEach(function (simpleApiTest) {
 	var testParts = simpleApiTest.split(".");
 	var parentObj = tests.api;
-	while(testParts.length>1){
+	while (testParts.length > 1) {
 		parentObj = parentObj[testParts[0]];
 		testParts.splice(0, 1);
 	}
 	simpleApiTest = testParts[0];
-	parentObj[simpleApiTest] = function (){
+	parentObj[simpleApiTest] = function () {
 		return simpleApiTest in window;
 	};
 });
