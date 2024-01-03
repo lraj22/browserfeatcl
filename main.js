@@ -1,28 +1,34 @@
 // main.js - runs the main logic and workings of index.html
 
 // Show errors clearly if possible
-window.onerror = function (e) { alert("ERROR: " + e); };
+window.onerror = function (e) { alert("Error occurred! Page may not work as expected. (" + e + ")"); };
+// Preliminary support features
+var consoleLogSupported = ("console" in window) && ("log" in window.console);
+var performanceNowSupported = ("performance" in window) && ("now" in window.performance);
 // [Status] messages in console
+function log() {
+	if (!consoleLogSupported) return;
+	console.log.apply(this, arguments);
+}
 function timestampStatus(status) {
-	console.log("[Status] " + status + " at " + performance.now().toFixed(0) + "ms");
+	log("[Status] " + status + (performanceNowSupported ? (" at " + performance.now().toFixed(0) + "ms") : ""));
 }
 // Object copy function, src (modified) https://stackoverflow.com/a/7574273
-function clone(obj){
-    if((obj == null) || (typeof(obj) != "object")){
-        return obj;
+function clone(obj) {
+	if ((obj == null) || (typeof (obj) != "object")) {
+		return obj;
 	}
 
-    var temp = new obj.constructor(); 
-    for(var key in obj)
-        temp[key] = clone(obj[key]);
+	var temp = new obj.constructor();
+	for (var key in obj)
+		temp[key] = clone(obj[key]);
 
-    return temp;
+	return temp;
 }
 
 // data is ready - let's go
 function ready(bcd) {
 	timestampStatus("Data fetched and tests started");
-	console.groupCollapsed("All test logs");
 	window.bcd = bcd;
 	// run every test
 	testsToRun.forEach(function (test) {
@@ -39,7 +45,7 @@ function ready(bcd) {
 		envNames.forEach(function (env) {
 			// start with an empty set of versions
 			supportSets[env] = [];
-			if (!Array.isArray(supportData[env])) supportData[env] = [supportData[env]];
+			if (!(supportData[env] instanceof Array)) supportData[env] = [supportData[env]];
 			supportData[env].forEach(function (supportRange) {
 				// for every range...
 				if (supportRange.version_added) {
@@ -62,14 +68,13 @@ function ready(bcd) {
 				validVersions[env] = arrayDifference(validVersions[env], supportSets[env]);
 			});
 		}
-		console.log(test.join("."), result, supportSets, "Current valid versions", clone(validVersions));
+		log(test.join("."), result, supportSets, "Current valid versions", clone(validVersions));
 	});
-	console.groupEnd();
 	envNames.forEach(function (env) {
 		var envEl = document.getElementById(env + "Range");
 		envEl.textContent = versionArraySimplify(validVersions[env], env).join(", ");
 	})
-	console.log("Final valid versions", validVersions);
+	log("Final valid versions", validVersions);
 	timestampStatus("Tests processing complete");
 }
 
@@ -93,10 +98,19 @@ window.addEventListener("load", function () {
 		return;
 	}
 	// request the locally stored BCD data
-	fetch("./mdnbcd-data.json")
-		.then((response) => response.json())
-		.then((json) => {
-			// now the data is ready, start the work
-			ready(json);
-		});
+	var req = new XMLHttpRequest();
+	req.responseType = "json";
+	req.open("GET", "./mdnbcd-data.json", true);
+	req.onload = function () {
+		if (this.status !== 200) {
+			alert("Error loading support data. Checks will not continue.");
+			return;
+		}
+		// now the data is ready, start the work
+		ready(req.response);
+	};
+	req.onerror = function () {
+		alert("Error loading support data. Checks will not continue.");
+	};
+	req.send(null);
 });

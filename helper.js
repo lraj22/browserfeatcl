@@ -18,7 +18,7 @@ var environments = {
 		"stepSize": 0.1
 	}
 };
-var envNames = Object.keys(environments);
+var envNames = ["chrome", "edge", "firefox", "safari", "opera"];
 // some array functions used elsewhere
 function generateArray(min, max, step) {
 	var arr = [];
