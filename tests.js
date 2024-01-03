@@ -12,6 +12,11 @@ var tests = {
 			}
 			return !!instance;
 		},
+		"Crypto": {
+			"randomUUID": function (){
+				return ("crypto" in window) && ("randomUUID" in crypto);
+			}
+		},
 		"Document": {
 			"caretRangeFromPoint": function () {
 				return "caretRangeFromPoint" in document;
@@ -31,6 +36,11 @@ var tests = {
 		"Headers": {
 			"getSetCookie": function () {
 				return ("Headers" in window) && ("getSetCookie" in Headers.prototype);
+			},
+		},
+		"HTMLScriptElement": {
+			"supports_static": function () {
+				return ("HTMLScriptElement" in window) && ("supports" in window.HTMLScriptElement);
 			},
 		},
 		"PerformanceResourceTiming": {
@@ -84,22 +94,30 @@ var tests = {
 };
 
 var simpleApiTests = [
+	"AudioData",
 	"AudioSinkInfo",
 	"CaptureController",
 	"ContentVisibilityAutoStateChangeEvent",
 	"CookieStore",
 	"CSSContainerRule",
 	"CSSFontPaletteValuesRule",
+	"CSSLayerBlockRule",
 	"CSSStartingStyleRule",
+	"CustomStateSet",
 	"DataTransfer",
 	"DocumentPictureInPicture",
 	"DOMStringMap",
 	"EventSource",
+	"EyeDropper",
+	"GravitySensor",
 	"NavigateEvent",
+	"OTPCredential",
 	"ScreenDetailed",
 	"ScrollTimeline",
+	"structuredClone",
 	"ToggleEvent",
 	"ViewTransition",
+	"WebTransport",
 	"Window.localStorage",
 	"Window.showModalDialog",
 	"Window.queryLocalFonts",
@@ -129,27 +147,37 @@ var testsToRun = [
 	["api", "DOMStringMap"], // Chrome 7+
 	["api", "Window", "localStorage"], // Chrome 4+
 	["html", "elements", "dialog"], // Chrome 37+
-	["api", "CookieStore"], // Chrome 87+
-	["api", "ScreenDetailed"], // Chrome 100+
-	["api", "CSSFontPaletteValuesRule"], // Chrome 101+
-	["api", "NavigateEvent"], // Chrome 102+
-	["api", "Window", "queryLocalFonts"], // Chrome 103+
-	["api", "WebGLRenderingContext", "drawingBufferColorSpace"], // Chrome 104+
-	["api", "CSSContainerRule"], // Chrome 105+
-	["javascript", "builtins", "Intl", "NumberFormat", "formatRange"], // Chrome 106+
-	["api", "PerformanceResourceTiming", "renderBlockingStatus"], // Chrome 107+
-	["api", "ContentVisibilityAutoStateChangeEvent"], // Chrome 108+
-	["api", "CaptureController"], // Chrome 109+
-	["api", "AudioSinkInfo"], // Chrome 110+
-	["api", "ViewTransition"], // Chrome 111+
-	["javascript", "builtins", "RegExp", "unicodeSets"], // Chrome 112+
-	["api", "Headers", "getSetCookie"], // Chrome 113+
-	["api", "ToggleEvent"], // Chrome 114+
-	["api", "ScrollTimeline"], // Chrome 115+
-	["api", "DocumentPictureInPicture"], // Chrome 116+
-	["api", "CSSStartingStyleRule"], // Chrome 117+
-	["html", "elements", "search"], // Chrome 118+
-	["api", "Document", "hasStorageAccess"], // Chrome 119+
-	["api", "URL", "canParse_static"], // Chrome 120+
+	["api", "CookieStore"], // Chrome/Edge 87+
+	["api", "CustomStateSet"], // Chrome/Edge 90+
+	["api", "GravitySensor"], // Chrome/Edge 91+
+	["api", "Crypto", "randomUUID"], // Chrome/Edge 92+
+	["api", "OTPCredential"], // Chrome/Edge 93+
+	["api", "AudioData"], // Chrome/Edge 94+
+	["api", "EyeDropper"], // Chrome/Edge 95+
+	["api", "HTMLScriptElement", "supports_static"], // Chrome/Edge 96+
+	["api", "WebTransport"], // Chrome/Edge 97+
+	["api", "structuredClone"], // Chrome/Edge 98+
+	["api", "CSSLayerBlockRule"], // Chrome/Edge 99+
+	["api", "ScreenDetailed"], // Chrome/Edge 100+
+	["api", "CSSFontPaletteValuesRule"], // Chrome/Edge 101+
+	["api", "NavigateEvent"], // Chrome/Edge 102+
+	["api", "Window", "queryLocalFonts"], // Chrome/Edge 103+
+	["api", "WebGLRenderingContext", "drawingBufferColorSpace"], // Chrome/Edge 104+
+	["api", "CSSContainerRule"], // Chrome/Edge 105+
+	["javascript", "builtins", "Intl", "NumberFormat", "formatRange"], // Chrome/Edge 106+
+	["api", "PerformanceResourceTiming", "renderBlockingStatus"], // Chrome/Edge 107+
+	["api", "ContentVisibilityAutoStateChangeEvent"], // Chrome/Edge 108+
+	["api", "CaptureController"], // Chrome/Edge 109+
+	["api", "AudioSinkInfo"], // Chrome/Edge 110+
+	["api", "ViewTransition"], // Chrome/Edge 111+
+	["javascript", "builtins", "RegExp", "unicodeSets"], // Chrome/Edge 112+
+	["api", "Headers", "getSetCookie"], // Chrome/Edge 113+
+	["api", "ToggleEvent"], // Chrome/Edge 114+
+	["api", "ScrollTimeline"], // Chrome/Edge 115+
+	["api", "DocumentPictureInPicture"], // Chrome/Edge 116+
+	["api", "CSSStartingStyleRule"], // Chrome/Edge 117+
+	["html", "elements", "search"], // Chrome/Edge 118+
+	["api", "Document", "hasStorageAccess"], // Chrome/Edge 119+
+	["api", "URL", "canParse_static"], // Chrome/Edge 120+
 	["api", "Window", "showModalDialog"], // introduced & deprecated // MIGHT REMOVE //////////
 ];
