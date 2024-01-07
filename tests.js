@@ -3,6 +3,8 @@
 // 'tests' contains all of the tests
 var tests = {
 	"api": {
+		"AudioData": null,
+		"AudioSinkInfo": null,
 		"Blob": function () {
 			var instance;
 			try {
@@ -12,128 +14,151 @@ var tests = {
 			}
 			return !!instance;
 		},
+		"Cache": null,
+		"CanvasRenderingContext2D": {
+			"direction": "CanvasRenderingContext2D.prototype.direction",
+			"drawFocusIfNeeded": "CanvasRenderingContext2D.prototype.drawFocusIfNeeded",
+			"reset": "CanvasRenderingContext2D.prototype.reset",
+		},
+		"CaptureController": null,
+		"CaretPosition": null,
+		"CompressionStream": null,
+		"console": {
+			"count_static": "console.count",
+		},
+		"ContentVisibilityAutoStateChangeEvent": null,
+		"CookieStore": null,
 		"Crypto": {
-			"randomUUID": function () {
-				return ("crypto" in window) && ("randomUUID" in window.crypto);
-			}
+			"randomUUID": "crypto.randomUUID",
 		},
+		"CSSContainerRule": null,
+		"CSSFontPaletteValuesRule": null,
+		"CSSLayerBlockRule": null,
+		"CSSStartingStyleRule": null,
+		"CustomStateSet": null,
+		"DataTransfer": null,
+		"DocumentPictureInPicture": null,
 		"Document": {
-			"caretRangeFromPoint": function () {
-				return "caretRangeFromPoint" in document;
-			},
-			"hasStorageAccess": function () {
-				return "hasStorageAccess" in document;
-			},
+			"caretRangeFromPoint": "document.caretRangeFromPoint",
+			"hasStorageAccess": "document.hasStorageAccess",
+			"implementation": "document.implementation",
+			"replaceChildren": "document.replaceChildren",
 		},
-		"DOMParser": function () {
-			return (!!window.DOMParser) && (!!new window.DOMParser());
-		},
+		"DOMParser": null,
 		"DOMRectReadOnly": {
-			"top": function () {
-				return ("DOMRectReadOnly" in window) && ("top" in window.DOMRectReadOnly.prototype);
-			}
+			"top": "DOMRectReadOnly.prototype.top",
 		},
+		"DOMStringMap": null,
+		"Element": {
+			"outerHTML": "Element.prototype.outerHTML",
+		},
+		"EventSource": null,
+		"EyeDropper": null,
+		"FileSystemDirectoryHandle": null,
+		"GravitySensor": null,
 		"Headers": {
-			"getSetCookie": function () {
-				return ("Headers" in window) && ("getSetCookie" in window.Headers.prototype);
-			},
+			"getSetCookie": "Headers.prototype.getSetCookie",
 		},
 		"HTMLScriptElement": {
-			"supports_static": function () {
-				return ("HTMLScriptElement" in window) && ("supports" in window.HTMLScriptElement);
-			},
+			"supports_static": "HTMLScriptElement.supports",
 		},
+		"MediaStreamTrackAudioSourceNode": null,
+		"MIDIAccess": null,
+		"NavigateEvent": null,
+		"Notification": {
+			"silent": "Notification.prototype.silent",
+		},
+		"OffscreenCanvas": null,
+		"OTPCredential": null,
+		"PerformanceMeasure": {
+			"detail": "PerformanceMeasure.prototype.detail",
+		},
+		"PerformancePaintTiming": null,
 		"PerformanceResourceTiming": {
-			"renderBlockingStatus": function () {
-				return ("PerformanceResourceTiming" in window) && ("renderBlockingStatus" in window.PerformanceResourceTiming.prototype);
-			}
+			"renderBlockingStatus": "PerformanceResourceTiming.prototype.renderBlockingStatus",
 		},
+		"PerformanceTiming": {
+			"secureConnectionStart": "performance.timing.secureConnectionStart",
+		},
+		"ReadableByteStreamController": null,
+		"RTCDTMFSender": null,
+		"RTCEncodedAudioFrame": null,
+		"ScreenDetailed": null,
 		"Screen": {
-			"left": function () {
-				return ("screen" in window) && ("left" in window.screen);
-			},
+			"left": "screen.left",
 		},
-		"WebGLRenderingContext": {
-			"drawingBufferColorSpace": function () {
-				return "drawingBufferColorSpace" in window.document.createElement("canvas").getContext("webgl2");
-			},
+		"ScrollTimeline": null,
+		"structuredClone": null,
+		"TextMetrics": {
+			"alphabeticBaseline": "TextMetrics.prototype.alphabeticBaseline",
+			"emHeightAscent": "TextMetrics.prototype.emHeightAscent",
 		},
-		"Window": {},
+		"ToggleEvent": null,
 		"URL": {
-			"canParse_static": function () {
-				return ("URL" in window) && ("canParse" in window.URL);
-			}
+			"canParse_static": "URL.canParse",
 		},
-	},
-	"html": {
-		"elements": {
-			"dialog": function () {
-				return document.createElement("dialog") instanceof HTMLDialogElement;
-			},
-			"search": function () {
-				return document.createElement("search") instanceof HTMLElement;
-			}
+		"ViewTransition": null,
+		"VisualViewport": null,
+		"WebGLRenderingContext": {
+			"drawingBufferColorSpace": "WebGL2RenderingContext.prototype.drawingBufferColorSpace",
+		},
+		"WebTransport": null,
+		"Window": {
+			"localStorage": "localStorage",
+			"showModalDialog": "showModalDialog",
+			"queryLocalFonts": "queryLocalFonts",
+		},
+		"WritableStream": null,
+		"XMLHttpRequest": {
+			"timeout": "XMLHttpRequest.prototype.timeout",
 		},
 	},
 	"javascript": {
 		"builtins": {
+			"Array": {
+				"findLast": "Array.prototype.findLast",
+			},
 			"Intl": {
 				"NumberFormat": {
-					"formatRange": function () {
-						return ("Intl" in window) && ("NumberFormat" in window.Intl) && ("formatRange" in window.Intl.NumberFormat.prototype);
-					},
+					"formatRange": "Intl.NumberFormat.prototype.formatRange",
 				},
 			},
+			"Object": {
+				"groupBy": "Object.groupBy",
+			},
+			"Promise": {
+				"withResolvers": "Promise.withResolvers",
+			},
 			"RegExp": {
-				"unicodeSets": function () {
-					return ("RegExp" in window) && ("unicodeSets" in window.RegExp.prototype);
-				},
+				"unicodeSets": "RegExp.prototype.unicodeSets",
 			},
 		},
 	},
 };
-
-var simpleApiTests = [
-	"AudioData",
-	"AudioSinkInfo",
-	"CaptureController",
-	"ContentVisibilityAutoStateChangeEvent",
-	"CookieStore",
-	"CSSContainerRule",
-	"CSSFontPaletteValuesRule",
-	"CSSLayerBlockRule",
-	"CSSStartingStyleRule",
-	"CustomStateSet",
-	"DataTransfer",
-	"DocumentPictureInPicture",
-	"DOMStringMap",
-	"EventSource",
-	"EyeDropper",
-	"GravitySensor",
-	"NavigateEvent",
-	"OTPCredential",
-	"ScreenDetailed",
-	"ScrollTimeline",
-	"structuredClone",
-	"ToggleEvent",
-	"ViewTransition",
-	"WebTransport",
-	"Window.localStorage",
-	"Window.showModalDialog",
-	"Window.queryLocalFonts",
-];
-simpleApiTests.forEach(function (simpleApiTest) {
-	var testParts = simpleApiTest.split(".");
-	var parentObj = tests.api;
-	while (testParts.length > 1) {
-		parentObj = parentObj[testParts[0]];
-		testParts.splice(0, 1);
+function expandApiTests(obj) {
+	for (var item in obj) {
+		if (obj[item] === null) obj[item] = item;
+		if (typeof obj[item] === "string") {
+			(function () {
+				var apiTest = obj[item].split(".");
+				obj[item] = function () {
+					var i, l = apiTest.length;
+					var currentObj = window;
+					for (i = 0; i < l; i++) {
+						if (apiTest[i] in currentObj) {
+							if (i !== (l - 1)) currentObj = currentObj[apiTest[i]];
+						}
+						else return false;
+					}
+					return true;
+				};
+			})();
+		} else if (obj[item] !== null && typeof (obj[item]) == "object") {
+			expandApiTests(obj[item]);
+		}
 	}
-	simpleApiTest = testParts[0];
-	parentObj[simpleApiTest] = function () {
-		return simpleApiTest in window;
-	};
-});
+}
+expandApiTests(tests);
 
 // 'testsToRun' is the list of tests that will run
 var testsToRun = [
@@ -142,11 +167,11 @@ var testsToRun = [
 	["api", "DOMRectReadOnly", "top"], // Chrome 2+
 	["api", "DataTransfer"], // Chrome 3+
 	["api", "Document", "caretRangeFromPoint"], // Chrome 4+
-	["api", "Blob"], // Chrome 5+
-	["api", "EventSource"], // Chrome 6+
+	["api", "Blob"], // Chrome 5+, Safari 6+
+	["api", "EventSource"], // Chrome 6+, Safari 5+
 	["api", "DOMStringMap"], // Chrome 7+
 	["api", "Window", "localStorage"], // Chrome 4+
-	["html", "elements", "dialog"], // Chrome 37+
+	["api", "CanvasRenderingContext2D", "drawFocusIfNeeded"], // Chrome 37+, Safari 8+
 	["api", "CookieStore"], // Chrome/Edge 87+
 	["api", "CustomStateSet"], // Chrome/Edge 90+
 	["api", "GravitySensor"], // Chrome/Edge 91+
@@ -155,29 +180,58 @@ var testsToRun = [
 	["api", "AudioData"], // Chrome/Edge 94+
 	["api", "EyeDropper"], // Chrome/Edge 95+
 	["api", "HTMLScriptElement", "supports_static"], // Chrome/Edge 96+
-	["api", "WebTransport"], // Chrome/Edge 97+
+	["api", "Element", "outerHTML"], // Firefox 11+
+	["api", "XMLHttpRequest", "timeout"], // Firefox 12+, Safari 7+
+	["api", "CaretPosition"], // Firefox 20+
+	["api", "console", "count_static"], // Firefox 30+, Safari 4+
+	["api", "Cache"], // Firefox 41+
+	["api", "RTCDTMFSender"], // Firefox 52+, Safari 13.1+
+	["api", "PerformanceTiming", "secureConnectionStart"], // Firefox 56+
+	["api", "MediaStreamTrackAudioSourceNode"], // Firefox 68+
+	["api", "Document", "replaceChildren"], // Firefox 78+, Safari 14+
+	["api", "PerformancePaintTiming"], // Firefox 84+
+	["api", "VisualViewport"], // Firefox 91+, Safari 13+
+	["api", "WritableStream"], // Firefox 100+
+	["api", "CanvasRenderingContext2D", "direction"], // Firefox 101+, Safari 9+
+	["api", "ReadableByteStreamController"], // Firefox 102+
+	["api", "PerformanceMeasure", "detail"], // Firefox 103+, Safari 14.1+
+	["javascript", "builtins", "Array", "findLast"], // Firefox 104+
+	["api", "OffscreenCanvas"], // Firefox 105+
+	["api", "FileSystemDirectoryHandle"], // Firefox 111+, Safari 15.2+
+	["api", "CompressionStream"], // Firefox 113+
+	["api", "WebTransport"], // Chrome/Edge 97+, Firefox 114+
 	["api", "structuredClone"], // Chrome/Edge 98+
 	["api", "CSSLayerBlockRule"], // Chrome/Edge 99+
 	["api", "ScreenDetailed"], // Chrome/Edge 100+
-	["api", "CSSFontPaletteValuesRule"], // Chrome/Edge 101+
+	["api", "CSSFontPaletteValuesRule"], // Chrome/Edge 101+, Firefox 107+
 	["api", "NavigateEvent"], // Chrome/Edge 102+
 	["api", "Window", "queryLocalFonts"], // Chrome/Edge 103+
-	["api", "WebGLRenderingContext", "drawingBufferColorSpace"], // Chrome/Edge 104+
-	["api", "CSSContainerRule"], // Chrome/Edge 105+
+	["api", "WebGLRenderingContext", "drawingBufferColorSpace"], // Chrome/Edge 104+, Safari 16.4+
+	["api", "CSSContainerRule"], // Chrome/Edge 105+, Firefox 110+, Safari 16+
 	["javascript", "builtins", "Intl", "NumberFormat", "formatRange"], // Chrome/Edge 106+
 	["api", "PerformanceResourceTiming", "renderBlockingStatus"], // Chrome/Edge 107+
 	["api", "ContentVisibilityAutoStateChangeEvent"], // Chrome/Edge 108+
+	["api", "MIDIAccess"], // Chrome/Edge/Firefox 108+
 	["api", "CaptureController"], // Chrome/Edge 109+
 	["api", "AudioSinkInfo"], // Chrome/Edge 110+
 	["api", "ViewTransition"], // Chrome/Edge 111+
-	["javascript", "builtins", "RegExp", "unicodeSets"], // Chrome/Edge 112+
-	["api", "Headers", "getSetCookie"], // Chrome/Edge 113+
-	["api", "ToggleEvent"], // Chrome/Edge 114+
+	["javascript", "builtins", "RegExp", "unicodeSets"], // Chrome/Edge 112+, Firefox 116+
+	["api", "Headers", "getSetCookie"], // Chrome/Edge 113+, Firefox 112+, Safari 17+
+	["api", "ToggleEvent"], // Chrome/Edge 114+, Firefox 120+
 	["api", "ScrollTimeline"], // Chrome/Edge 115+
 	["api", "DocumentPictureInPicture"], // Chrome/Edge 116+
 	["api", "CSSStartingStyleRule"], // Chrome/Edge 117+
-	["html", "elements", "search"], // Chrome/Edge 118+
-	["api", "Document", "hasStorageAccess"], // Chrome/Edge 119+
-	["api", "URL", "canParse_static"], // Chrome/Edge 120+
+	["api", "RTCEncodedAudioFrame"], // Firefox 117+, Safari 15.4+
+	["api", "TextMetrics", "alphabeticBaseline"], // Chrome/Edge 118+
+	["api", "TextMetrics", "emHeightAscent"], // Firefox 118+
+	["api", "Document", "hasStorageAccess"], // Chrome/Edge 119+, Safari 11.1+
+	["javascript", "builtins", "Object", "groupBy"], // Firefox 119+
+	["api", "URL", "canParse_static"], // Chrome/Edge 120+, Firefox 115+
+	["javascript", "builtins", "Promise", "withResolvers"], // Firefox 121+
+	["api", "Document", "implementation"], // Safari 1+
+	["api", "Notification", "silent"], // Safari 16.6+
+	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
 	["api", "Window", "showModalDialog"], // introduced & deprecated // MIGHT REMOVE //////////
 ];
+// purposefully skipped: Firefox 106 109
+// note: direct version support becomes sparse as browser gets older

@@ -1,5 +1,33 @@
 // helper.js - contains variables/functions to assist main.js
 
+// Preliminary support features
+var consoleLogSupported = ("console" in window) && ("log" in window.console);
+var performanceNowSupported = ("performance" in window) && ("now" in window.performance);
+// [Status] messages in console
+function log() {
+	if (!consoleLogSupported) return;
+	console.log.apply(this, arguments);
+}
+function timestampStatus(status) {
+	log("[Status] " + status + (performanceNowSupported ? (" at " + performance.now().toFixed(0) + "ms") : ""));
+}
+// Object copy function, src (modified) https://stackoverflow.com/a/7574273
+function cloneObj(obj) {
+	if ((obj == null) || (typeof (obj) != "object")) {
+		return obj;
+	}
+
+	var temp = new obj.constructor();
+	for (var key in obj)
+		temp[key] = cloneObj(obj[key]);
+
+	return temp;
+}
+// Array copy function
+function cloneArray(arr){
+	return arr.map(function(item){return item;});
+}
+
 // define environments and their related information
 var environments = {
 	"chrome": {

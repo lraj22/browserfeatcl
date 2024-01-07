@@ -2,29 +2,6 @@
 
 // Show errors clearly if possible
 window.onerror = function (e) { alert("Error occurred! Page may not work as expected. (" + e + ")"); };
-// Preliminary support features
-var consoleLogSupported = ("console" in window) && ("log" in window.console);
-var performanceNowSupported = ("performance" in window) && ("now" in window.performance);
-// [Status] messages in console
-function log() {
-	if (!consoleLogSupported) return;
-	console.log.apply(this, arguments);
-}
-function timestampStatus(status) {
-	log("[Status] " + status + (performanceNowSupported ? (" at " + performance.now().toFixed(0) + "ms") : ""));
-}
-// Object copy function, src (modified) https://stackoverflow.com/a/7574273
-function clone(obj) {
-	if ((obj == null) || (typeof (obj) != "object")) {
-		return obj;
-	}
-
-	var temp = new obj.constructor();
-	for (var key in obj)
-		temp[key] = clone(obj[key]);
-
-	return temp;
-}
 
 // data is ready - let's go
 function ready(bcd) {
@@ -47,6 +24,13 @@ function ready(bcd) {
 			supportSets[env] = [];
 			if (!(supportData[env] instanceof Array)) supportData[env] = [supportData[env]];
 			supportData[env].forEach(function (supportRange) {
+				if (supportSets[env] === null) return; // if previously flag-skipped, continue skip
+				if (supportRange.flags) {
+					// if there are flags, just ignore the entire thing.
+					// we can't check flag data, so let's just skip.
+					supportSets[env] = null;
+					return;
+				}
 				// for every range...
 				if (supportRange.version_added) {
 					// if they have ever added it, calculate the full range
@@ -60,15 +44,17 @@ function ready(bcd) {
 		if (result) {
 			// if it exists in this browser, run an array intersection
 			envNames.forEach(function (env) {
+				if (supportSets[env] === null) return;
 				validVersions[env] = arrayIntersection(validVersions[env], supportSets[env]);
 			});
 		} else {
 			// if not, run an array difference
 			envNames.forEach(function (env) {
+				if (supportSets[env] === null) return;
 				validVersions[env] = arrayDifference(validVersions[env], supportSets[env]);
 			});
 		}
-		log(test.join("."), result, supportSets, "Current valid versions", clone(validVersions));
+		log(test.join("."), result, supportSets, "Current valid versions", cloneObj(validVersions));
 	});
 	envNames.forEach(function (env) {
 		var envEl = document.getElementById(env + "Range");
