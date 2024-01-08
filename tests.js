@@ -31,15 +31,20 @@ var tests = {
 		"Crypto": {
 			"randomUUID": "crypto.randomUUID",
 		},
+		"CSS": {
+			"cap_static": "CSS.cap",
+		},
 		"CSSContainerRule": null,
 		"CSSFontPaletteValuesRule": null,
 		"CSSLayerBlockRule": null,
+		"CSSPrimitiveValue": null,
 		"CSSStartingStyleRule": null,
 		"CustomStateSet": null,
 		"DataTransfer": null,
 		"DocumentPictureInPicture": null,
 		"Document": {
 			"caretRangeFromPoint": "document.caretRangeFromPoint",
+			"createTouchList": "document.createTouchList",
 			"getElementsByName": "document.getElementsByName",
 			"hasStorageAccess": "document.hasStorageAccess",
 			"implementation": "document.implementation",
@@ -244,6 +249,9 @@ var testsToRun = [
 	["api", "Document", "implementation"], // Safari 1+
 	["api", "Notification", "silent"], // Safari 16.6+, Opera 30+
 	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
+	["api", "CSSPrimitiveValue"], // Chrome 1-39, no Edge
+	["api", "Document", "createTouchList"], // Chrome 22-68, no Edge
+	["api", "CSS", "cap_static"], // Chrome 118+, no Edge
 	["api", "Window", "showModalDialog"], // introduced & deprecated // MIGHT REMOVE //////////
 ];
 // purposefully skipped: Firefox 106 109, Opera 2
