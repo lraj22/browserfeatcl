@@ -34,7 +34,7 @@ function ready(bcd) {
 				// for every range...
 				if (supportRange.version_added) {
 					// if they have ever added it, calculate the full range
-					supportSets[env] = arrayUnion(supportSets[env], generateArray(parseFloat(supportRange.version_added), parseFloat(supportRange.version_last || "128"), 0.1));
+					supportSets[env] = arrayUnion(supportSets[env], generateArray(parseFloat(supportRange.version_added), parseFloat(supportRange.version_last || upperVersion), 0.1));
 				}
 				// otherwise, leave it as is
 			});

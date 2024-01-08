@@ -76,8 +76,9 @@ var validVersions = {
 	"edge": arrayDifference(generateArray(12, 120), generateArray(19, 78)),
 	"firefox": generateArray(1, 121, 0.1),
 	"safari": generateArray(3, 17.2, 0.1),
-	"opera": generateArray(10.1, 104, 0.1),
+	"opera": generateArray(2, 106, 0.1),
 };
+var upperVersion = "130";
 
 // simplify complicated union arrays into simple explanations
 function versionArraySimplify(versionArray, env) {
