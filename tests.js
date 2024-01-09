@@ -32,9 +32,6 @@ var tests = {
 		"Crypto": {
 			"randomUUID": "crypto.randomUUID",
 		},
-		"CSS": {
-			"cap_static": "CSS.cap",
-		},
 		"CSSContainerRule": null,
 		"CSSFontPaletteValuesRule": null,
 		"CSSLayerBlockRule": null,
@@ -252,7 +249,6 @@ var testsToRun = [
 	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
 	["api", "CSSPrimitiveValue"], // Chrome 1-39, no Edge
 	["api", "Document", "createTouchList"], // Chrome 22-68, no Edge
-	["api", "CSS", "cap_static"], // Chrome 118+, no Edge
 	["api", "Window", "showModalDialog"], // introduced & deprecated // MIGHT REMOVE //////////
 ];
 // purposefully skipped: Firefox 106 109

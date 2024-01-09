@@ -63,12 +63,19 @@ function ready(bcd) {
 		envEl.textContent = versionArraySimplify(validVersions[env], env).join(", ");
 		if (validVersions[env].length > 0) supportedEnvs.push(env);
 	});
+	var envDisplay;
+	var chromiumFallback = false;
+	if ((supportedEnvs.length === 2) && (validVersions["chrome"].length > 0) && (JSON.stringify(versionArraySimplify(validVersions["chrome"], "chrome")) === JSON.stringify(versionArraySimplify(validVersions["edge"], "edge")))) {
+		chromiumFallback = true;
+		envDisplay = "Chromium";
+	} else {
+		envDisplay = supportedEnvs[0][0].toUpperCase() + supportedEnvs[0].slice(1);
+	}
 	if (supportedEnvs.length === 0) {
 		calculated.innerHTML = '<strong class="error">' + "We couldn't determine what browser you're using...</strong><p>Please double check your browser is within the supported versions below!</p>";
 	}
-	if (supportedEnvs.length === 1) {
-		var onlyEnv = supportedEnvs[0];
-		calculated.innerHTML = '<strong class="success">' + "You're using " + onlyEnv[0].toUpperCase() + onlyEnv.slice(1) + " " + versionArraySimplify(validVersions[onlyEnv], onlyEnv) + "!</strong>";
+	if (chromiumFallback || (supportedEnvs.length === 1)) {
+		calculated.innerHTML = '<strong class="success">' + "You're using " + envDisplay + " " + versionArraySimplify(validVersions[supportedEnvs[0]], supportedEnvs[0]) + "!</strong>" + (chromiumFallback ? "<p>Both Google Chrome and Microsoft Edge use the Chromium browser technology behind the scenes, so their features are more or less the same. You're using one of them!</p>" : "");
 	}
 	log("Final valid versions", validVersions);
 	timestampStatus("Tests processing complete");
