@@ -3,6 +3,7 @@
 // 'tests' contains all of the tests
 var tests = {
 	"api": {
+		"AbortSignal": null,
 		"AudioData": null,
 		"AudioSinkInfo": null,
 		"Blob": function () {
@@ -59,7 +60,6 @@ var tests = {
 			"outerHTML": "Element.prototype.outerHTML",
 		},
 		"EventSource": null,
-		"EyeDropper": null,
 		"FileSystemDirectoryHandle": null,
 		"GravitySensor": null,
 		"Headers": {
@@ -109,6 +109,7 @@ var tests = {
 		"URL": {
 			"canParse_static": "URL.canParse",
 		},
+		"URLPattern": null,
 		"ViewTransition": null,
 		"VisualViewport": null,
 		"WebGLRenderingContext": {
@@ -193,7 +194,7 @@ var testsToRun = [
 	["api", "Crypto", "randomUUID"], // Chrome/Edge 92+
 	["api", "OTPCredential"], // Chrome/Edge 93+
 	["api", "AudioData"], // Chrome/Edge 94+, Opera 80+
-	["api", "EyeDropper"], // Chrome/Edge 95+
+	["api", "URLPattern"], // Chrome/Edge 95+
 	["api", "HTMLScriptElement", "supports_static"], // Chrome/Edge 96+
 	["api", "Element", "outerHTML"], // Firefox 11+
 	["api", "XMLHttpRequest", "timeout"], // Firefox 12+, Safari 7+
@@ -242,11 +243,11 @@ var testsToRun = [
 	["api", "RTCEncodedAudioFrame"], // Firefox 117+, Safari 15.4+, Opera 72+
 	["api", "TextMetrics", "alphabeticBaseline"], // Chrome/Edge 118+, Opera 104+
 	["api", "TextMetrics", "emHeightAscent"], // Firefox 118+
-	["api", "Document", "hasStorageAccess"], // Chrome/Edge 119+, Safari 11.1+, Opera 105+
 	["javascript", "builtins", "Object", "groupBy"], // Firefox 119+
 	["api", "URL", "canParse_static"], // Chrome/Edge 120+, Firefox 115+, Opera 106+
-	["javascript", "builtins", "Promise", "withResolvers"], // Firefox 121+
+	["javascript", "builtins", "Promise", "withResolvers"], // Chrome/Edge 119+, Firefox 121+, Opera 105+
 	["api", "Document", "implementation"], // Safari 1+
+	["api", "AbortSignal"], // Safari 11.1+
 	["api", "Notification", "silent"], // Safari 16.6+, Opera 30+
 	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
 	["api", "CSSPrimitiveValue"], // Chrome 1-39, no Edge
@@ -254,5 +255,5 @@ var testsToRun = [
 	["api", "CSS", "cap_static"], // Chrome 118+, no Edge
 	["api", "Window", "showModalDialog"], // introduced & deprecated // MIGHT REMOVE //////////
 ];
-// purposefully skipped: Firefox 106 109, Opera 2
+// purposefully skipped: Firefox 106 109
 // note: direct version support becomes sparse as browser gets older

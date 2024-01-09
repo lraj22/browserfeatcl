@@ -56,10 +56,20 @@ function ready(bcd) {
 		}
 		log(test.join("."), result, supportSets, "Current valid versions", cloneObj(validVersions));
 	});
+	var supportedEnvs = [];
+	var calculated = document.getElementById("calculated");
 	envNames.forEach(function (env) {
 		var envEl = document.getElementById(env + "Range");
 		envEl.textContent = versionArraySimplify(validVersions[env], env).join(", ");
-	})
+		if (validVersions[env].length > 0) supportedEnvs.push(env);
+	});
+	if (supportedEnvs.length === 0) {
+		calculated.innerHTML = '<strong class="error">' + "We couldn't determine what browser you're using...</strong><p>Please double check your browser is within the supported versions below!</p>";
+	}
+	if (supportedEnvs.length === 1) {
+		var onlyEnv = supportedEnvs[0];
+		calculated.innerHTML = '<strong class="success">' + "You're using " + onlyEnv[0].toUpperCase() + onlyEnv.slice(1) + " " + versionArraySimplify(validVersions[onlyEnv], onlyEnv) + "!</strong>";
+	}
 	log("Final valid versions", validVersions);
 	timestampStatus("Tests processing complete");
 }

@@ -21,6 +21,16 @@ main {
 	padding: 1rem;
 }
 
+.success {
+	font-size: 30px;
+	color: green;
+}
+
+.error {
+	font-size: 30px;
+	color: red;
+}
+
 #calculated>p {
 	margin: 0;
 }
