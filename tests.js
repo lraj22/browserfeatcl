@@ -92,9 +92,6 @@ var tests = {
 		"RTCDTMFSender": null,
 		"RTCEncodedAudioFrame": null,
 		"ScreenDetailed": null,
-		"Screen": {
-			"left": "screen.left",
-		},
 		"ScrollTimeline": null,
 		"SpeechSynthesis": "speechSynthesis",
 		"structuredClone": null,
@@ -115,7 +112,6 @@ var tests = {
 		"WebTransport": null,
 		"Window": {
 			"localStorage": "localStorage",
-			"showModalDialog": "showModalDialog",
 			"queryLocalFonts": "queryLocalFonts",
 		},
 		"WritableStream": null,
@@ -172,7 +168,6 @@ expandApiTests(tests);
 
 // 'testsToRun' is the list of tests that will run
 var testsToRun = [
-	["api", "Screen", "left"], // only Firefox
 	["api", "History"], // Opera 3+
 	["api", "Document", "getElementsByName"], // Opera 5+
 	["api", "DOMParser"], // Chrome 1+, Opera 8+
@@ -249,7 +244,6 @@ var testsToRun = [
 	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
 	["api", "CSSPrimitiveValue"], // Chrome 1-39, no Edge
 	["api", "Document", "createTouchList"], // Chrome 22-68, no Edge
-	["api", "Window", "showModalDialog"], // introduced & deprecated // MIGHT REMOVE //////////
 ];
 // purposefully skipped: Firefox 106 109
 // note: direct version support becomes sparse as browser gets older
