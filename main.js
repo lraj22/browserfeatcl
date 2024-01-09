@@ -68,7 +68,7 @@ function ready(bcd) {
 	if ((supportedEnvs.length === 2) && (validVersions["chrome"].length > 0) && (JSON.stringify(versionArraySimplify(validVersions["chrome"], "chrome")) === JSON.stringify(versionArraySimplify(validVersions["edge"], "edge")))) {
 		chromiumFallback = true;
 		envDisplay = "Chromium";
-	} else {
+	} else if (supportedEnvs.length > 0) {
 		envDisplay = supportedEnvs[0][0].toUpperCase() + supportedEnvs[0].slice(1);
 	}
 	if (supportedEnvs.length === 0) {
