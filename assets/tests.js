@@ -70,8 +70,8 @@ var tests = {
 		"MediaStreamTrackAudioSourceNode": null,
 		"MIDIAccess": null,
 		"NavigateEvent": null,
-		"Navigator": {
-			"getUserMedia": "navigator.getUserMedia",
+		"MediaDevices": {
+			"getSupportedConstraints": "navigator.mediaDevices.getSupportedConstraints",
 		},
 		"Notification": {
 			"silent": "Notification.prototype.silent",
@@ -198,7 +198,7 @@ var testsToRun = [
 	["api", "MediaStreamTrackAudioSourceNode"], // Firefox 68+
 	["api", "Document", "replaceChildren"], // Firefox 78+, Safari 14+
 	["api", "PerformancePaintTiming"], // Firefox 84+
-	["api", "Navigator", "getUserMedia"], // Opera 40+
+	["api", "MediaDevices", "getSupportedConstraints"], // Opera 40+
 	["api", "VisualViewport"], // Firefox 91+, Safari 13+, Opera 48+
 	["api", "WritableStream"], // Firefox 100+
 	["api", "CanvasRenderingContext2D", "direction"], // Firefox 101+, Safari 9+
