@@ -7,8 +7,11 @@ window.onerror = function (e) { alert("Error occurred! Page may not work as expe
 function ready(bcd) {
 	timestampStatus("Data fetched and tests started");
 	window.bcd = bcd;
-	// run every test
-	testsToRun.forEach(function (test) {
+	var nonblockingI = 0;
+	var l = testsToRun.length;
+	// run every tests (non-blocking hopefully)
+	(function chunk() {
+		var test = cloneArray(testsToRun[nonblockingI]);
 		// determine the correct test function and support data object
 		var testFunc = tests;
 		var supportData = bcd;
@@ -55,7 +58,18 @@ function ready(bcd) {
 			});
 		}
 		log(test.join("."), result, supportSets, "Current valid versions", cloneObj(validVersions));
-	});
+		nonblockingI++;
+		if (nonblockingI < l) {
+			setTimeout(chunk, 0);
+		} else {
+			testsCompleted();
+		}
+	})();
+	// run every test
+}
+
+// when the tests complete
+function testsCompleted() {
 	var supportedEnvs = [];
 	var calculated = document.getElementById("calculated");
 	envNames.forEach(function (env) {
