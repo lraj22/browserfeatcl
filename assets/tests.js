@@ -23,6 +23,7 @@ var tests = {
 		},
 		"CaptureController": null,
 		"CaretPosition": null,
+		"CharacterBoundsUpdateEvent": null,
 		"CompressionStream": null,
 		"console": {
 			"count_static": "console.count",
@@ -66,6 +67,7 @@ var tests = {
 		"HTMLScriptElement": {
 			"supports_static": "HTMLScriptElement.supports",
 		},
+		"LargestContentfulPaint": null,
 		"MediaSession": "navigator.mediaSession",
 		"MediaStreamTrackAudioSourceNode": null,
 		"MIDIAccess": null,
@@ -238,6 +240,8 @@ var testsToRun = [
 	["javascript", "builtins", "Object", "groupBy"], // Firefox 119+
 	["api", "URL", "canParse_static"], // Chrome/Edge 120+, Firefox 115+, Opera 106+
 	["javascript", "builtins", "Promise", "withResolvers"], // Chrome/Edge 119+, Firefox 121+, Opera 105+
+	["api", "CharacterBoundsUpdateEvent"], // Chrome/Edge 121+
+	["api", "LargestContentfulPaint"], // Firefox 122+
 	["api", "Document", "implementation"], // Safari 1+
 	["api", "AbortSignal"], // Safari 11.1+
 	["api", "Notification", "silent"], // Safari 16.6+, Opera 30+
