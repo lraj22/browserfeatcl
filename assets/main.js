@@ -1,7 +1,10 @@
 // main.js - runs the main logic and workings of index.html
 
 // Show errors clearly if possible
-window.onerror = function (e) { alert("Error occurred! Page may not work as expected. (" + e + ")"); };
+window.onerror = function (e) {
+	let calculated = document.getElementById("calculated");
+	calculated.innerHTML = '<strong class="error">Error occurred! Page may not work as expected. (' + e + ')</strong>"';
+};
 
 // data is ready - let's go
 function ready(bcd) {
@@ -111,7 +114,8 @@ function isBrowserUnsupported() {
 window.addEventListener("load", function () {
 	timestampStatus("Page ready");
 	if (isBrowserUnsupported()) {
-		alert("Your browser is unsupported!");
+		let calculated = document.getElementById("calculated");
+		calculated.innerHTML = '<strong class="error">Your browser is unsupported!</strong>';
 		return;
 	}
 	// request the locally stored BCD data
@@ -120,14 +124,16 @@ window.addEventListener("load", function () {
 	req.open("GET", "./mdnbcd-data.json", true);
 	req.onload = function () {
 		if (this.status !== 200) {
-			alert("Error loading support data. Checks will not continue.");
+			let calculated = document.getElementById("calculated");
+			calculated.innerHTML = '<strong class="error">Error loading support data.  Request returned ' + this.status + '.</strong><p>Checks will not continue.</p>';
 			return;
 		}
 		// now the data is ready, start the work
 		ready(req.response);
 	};
 	req.onerror = function () {
-		alert("Error loading support data. Checks will not continue.");
+		let calculated = document.getElementById("calculated");
+		calculated.innerHTML = '<strong class="error">Error loading support data.</strong><p>Checks will not continue.</p>';
 	};
 	req.send(null);
 });
