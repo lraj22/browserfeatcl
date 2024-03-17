@@ -2,7 +2,7 @@
 
 // Show errors clearly if possible
 window.onerror = function (e) {
-	let calculated = document.getElementById("calculated");
+	var calculated = document.getElementById("calculated");
 	calculated.innerHTML = '<strong class="error">Error occurred! Page may not work as expected. (' + e + ')</strong>"';
 };
 
@@ -114,7 +114,7 @@ function isBrowserUnsupported() {
 window.addEventListener("load", function () {
 	timestampStatus("Page ready");
 	if (isBrowserUnsupported()) {
-		let calculated = document.getElementById("calculated");
+		var calculated = document.getElementById("calculated");
 		calculated.innerHTML = '<strong class="error">Your browser is unsupported!</strong>';
 		return;
 	}
@@ -124,7 +124,7 @@ window.addEventListener("load", function () {
 	req.open("GET", "./mdnbcd-data.json", true);
 	req.onload = function () {
 		if (this.status !== 200) {
-			let calculated = document.getElementById("calculated");
+			var calculated = document.getElementById("calculated");
 			calculated.innerHTML = '<strong class="error">Error loading support data.  Request returned ' + this.status + '.</strong><p>Checks will not continue.</p>';
 			return;
 		}
@@ -132,7 +132,7 @@ window.addEventListener("load", function () {
 		ready(req.response);
 	};
 	req.onerror = function () {
-		let calculated = document.getElementById("calculated");
+		var calculated = document.getElementById("calculated");
 		calculated.innerHTML = '<strong class="error">Error loading support data.</strong><p>Checks will not continue.</p>';
 	};
 	req.send(null);
