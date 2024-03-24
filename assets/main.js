@@ -105,17 +105,17 @@ function isBrowserUnsupported() {
 		if (!document.createElement("canvas").getContext("2d")) return true; // CanvasRenderingContext2D unsupported
 		// to be finished: check other support
 	} catch (e) {
-		console.error(e);
-		return true;
+		return e;
 	}
 }
 
 // page has loaded
 window.addEventListener("load", function () {
 	timestampStatus("Page ready");
-	if (isBrowserUnsupported()) {
+	var browserUnsupported = isBrowserUnsupported();
+	if (browserUnsupported) {
 		var calculated = document.getElementById("calculated");
-		calculated.innerHTML = '<strong class="error">Your browser is unsupported!</strong>';
+		calculated.innerHTML = '<strong class="error">Your browser is unsupported!' + ((browserUnsupported === true) ? '' : (' Error occurred. (' + browserUnsupported + ')')) + '</strong>';
 		return;
 	}
 	// request the locally stored BCD data
