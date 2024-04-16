@@ -72,6 +72,7 @@ var tests = {
 		"MediaStreamTrackAudioSourceNode": null,
 		"MIDIAccess": null,
 		"NavigateEvent": null,
+		"NotRestoredReasonDetails": null,
 		"MediaDevices": {
 			"getSupportedConstraints": "navigator.mediaDevices.getSupportedConstraints",
 		},
@@ -95,6 +96,9 @@ var tests = {
 		"RTCEncodedAudioFrame": null,
 		"ScreenDetailed": null,
 		"ScrollTimeline": null,
+		"ShadowRoot": {
+			"clonable": "ShadowRoot.prototype.clonable",
+		},
 		"SpeechSynthesis": "speechSynthesis",
 		"structuredClone": null,
 		"TextMetrics": {
@@ -130,6 +134,9 @@ var tests = {
 				"NumberFormat": {
 					"formatRange": "Intl.NumberFormat.prototype.formatRange",
 				},
+			},
+			"Iterator": {
+				"Iterator": "Iterator",
 			},
 			"Object": {
 				"groupBy": "Object.groupBy",
@@ -181,6 +188,12 @@ var testsToRun = [
 	["api", "DOMStringMap"], // Chrome 7+
 	["api", "Window", "localStorage"], // Chrome 4+
 	["api", "Document", "getElementsByName"], // Opera 5+
+	["api", "Document", "implementation"], // Safari 1+
+	["api", "AbortSignal"], // Safari 11.1+
+	["api", "Notification", "silent"], // Safari 16.6+, Opera 30+
+	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
+	["api", "CSSPrimitiveValue"], // Chrome 1-39, no Edge
+	["api", "Document", "createTouchList"], // Chrome 22-68, no Edge
 	["api", "CanvasRenderingContext2D", "drawFocusIfNeeded"], // Chrome 37+, Safari 8+
 	["api", "CookieStore"], // Chrome/Edge 87+
 	["api", "CustomStateSet"], // Chrome/Edge 90+
@@ -223,7 +236,7 @@ var testsToRun = [
 	["api", "CSSContainerRule"], // Chrome/Edge 105+, Firefox 110+, Safari 16+, Opera 91+
 	["javascript", "builtins", "Intl", "NumberFormat", "formatRange"], // Chrome/Edge 106+, Opera 92+
 	["api", "PerformanceResourceTiming", "renderBlockingStatus"], // Chrome/Edge 107+, Opera 93+
-	["api", "ContentVisibilityAutoStateChangeEvent"], // Chrome/Edge 108+, Opera 94+
+	["api", "ContentVisibilityAutoStateChangeEvent"], // Chrome/Edge 108+, Opera 94+, Firefox 124+
 	["api", "MIDIAccess"], // Chrome/Edge/Firefox 108+
 	["api", "CaptureController"], // Chrome/Edge 109+, Opera 95+
 	["api", "AudioSinkInfo"], // Chrome/Edge 110+, Opera 96+
@@ -241,13 +254,10 @@ var testsToRun = [
 	["api", "URL", "canParse_static"], // Chrome/Edge 120+, Firefox 115+, Opera 106+
 	["javascript", "builtins", "Promise", "withResolvers"], // Chrome/Edge 119+, Firefox 121+, Opera 105+
 	["api", "CharacterBoundsUpdateEvent"], // Chrome/Edge 121+
+	["javascript", "builtins", "Iterator", "Iterator"], // Chrome/Edge 122+
 	["api", "LargestContentfulPaint"], // Firefox 122+
-	["api", "Document", "implementation"], // Safari 1+
-	["api", "AbortSignal"], // Safari 11.1+
-	["api", "Notification", "silent"], // Safari 16.6+, Opera 30+
-	["api", "CanvasRenderingContext2D", "reset"], // Safari 17.2+
-	["api", "CSSPrimitiveValue"], // Chrome 1-39, no Edge
-	["api", "Document", "createTouchList"], // Chrome 22-68, no Edge
+	["api", "NotRestoredReasonDetails"], // Chrome 123+
+	["api", "ShadowRoot", "clonable"], // Firefox 123+
 ];
 // purposefully skipped: Firefox 106 109
 // note: direct version support becomes sparse as browser gets older

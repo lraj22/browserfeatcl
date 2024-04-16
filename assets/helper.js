@@ -71,10 +71,11 @@ function arrayDifference(array1, array2) {
 	return array1.filter(function (n) { return array2.indexOf(n) === -1; });
 }
 // valid versions according to the BCD browser schema
+var chromiumLatest = 123;
 var validVersions = {
-	"chrome": generateArray(1, 121),
-	"edge": arrayDifference(generateArray(12, 121), generateArray(19, 78)),
-	"firefox": generateArray(1, 122, 0.1),
+	"chrome": generateArray(1, chromiumLatest),
+	"edge": arrayDifference(generateArray(12, chromiumLatest), generateArray(19, 78)),
+	"firefox": generateArray(1, 124, 0.1),
 	"safari": generateArray(3, 17.2, 0.1),
 	"opera": generateArray(2, 106, 0.1),
 };
