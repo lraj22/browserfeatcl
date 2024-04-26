@@ -129,7 +129,15 @@ window.addEventListener("load", function () {
 			return;
 		}
 		// now the data is ready, start the work
-		ready(req.response);
+		if ("response" in req) {
+			ready(req.response);
+		} else if (("JSON" in window) && ("parse" in JSON)) {
+			ready(JSON.parse(req.responseText));
+		} else {
+			var json;
+			eval('json = ' + req.responseText);
+			ready(json);
+		}
 	};
 	req.onerror = function () {
 		var calculated = document.getElementById("calculated");
