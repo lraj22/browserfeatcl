@@ -11,7 +11,10 @@ var tests = {
 			try {
 				instance = new Blob();
 			} catch (e) {
-				instance = new BlobBuilder();
+				try {
+					instance = new BlobBuilder();
+				} catch (f) {
+				}
 			}
 			return !!instance;
 		},
