@@ -24,8 +24,8 @@ function cloneObj(obj) {
 	return temp;
 }
 // Array copy function
-function cloneArray(arr){
-	return arr.map(function(item){return item;});
+function cloneArray(arr) {
+	return arr.map(function (item) { return item; });
 }
 
 // define environments and their related information
@@ -37,7 +37,7 @@ var environments = {
 		"stepSize": 1
 	},
 	"firefox": {
-		"stepSize": 0.1
+		"stepSize": 1 // stepSize != 0.1; early versions of FF aren't tested
 	},
 	"safari": {
 		"stepSize": 0.1
@@ -75,7 +75,7 @@ var chromiumLatest = 123;
 var validVersions = {
 	"chrome": generateArray(1, chromiumLatest),
 	"edge": arrayDifference(generateArray(12, chromiumLatest), generateArray(19, 78)),
-	"firefox": generateArray(1, 124, 0.1),
+	"firefox": generateArray(6, 124, 1),
 	"safari": generateArray(3, 17.2, 0.1),
 	"opera": generateArray(2, 106, 0.1),
 };
