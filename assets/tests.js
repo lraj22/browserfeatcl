@@ -13,8 +13,7 @@ var tests = {
 			} catch (e) {
 				try {
 					instance = new BlobBuilder();
-				} catch (f) {
-				}
+				} catch (f) { }
 			}
 			return !!instance;
 		},
